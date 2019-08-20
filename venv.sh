@@ -18,6 +18,8 @@ while [[ $PWD != "/" ]]; do
 	cd ..
 done
 
+cd $original_pwd
+
 if [[ -z "$VIRTUAL_ENV" ]]; then
 	cd $original_pwd
 	venv=$VENV_HOME/$PWD
