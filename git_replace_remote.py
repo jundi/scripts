@@ -14,11 +14,11 @@ def main():
                                      " if matching urls is found.")
     parser.add_argument('repository', nargs='+',
                         help="Path to repository")
-    parser.add_argument('--source-prefix', required=True,
+    parser.add_argument('--source-prefix',
                         help='Prefix of old url')
     parser.add_argument('--source-suffix', default="",
                         help='Suffix of old url')
-    parser.add_argument('--dest-prefix', required=True,
+    parser.add_argument('--dest-prefix',
                         help='Prefix of new url')
     parser.add_argument('--dest-suffix', default=None,
                         help='Optional suffix added to new url. Old suffix is '
@@ -27,6 +27,8 @@ def main():
     parser.add_argument('--dry-run', action='store_true',
                         help='Do not write changes, only print what would'
                              ' happen.')
+    parser.add_argument('--list-urls', action='store_true',
+                        help='Only list urls in repository')
 
     argcomplete.autocomplete(parser)
     args = parser.parse_args()
@@ -34,6 +36,9 @@ def main():
     # Suffix is copied from old url, if new suffix if not defined
     if args.dest_suffix is None:
         args.dest_suffix = args.source_suffix
+
+    if not (args.list_urls or (args.source_prefix and args.dest_prefix)):
+        print("--source-prefix and --dest-prefix are required")
 
     for path in args.repository:
 
@@ -45,6 +50,10 @@ def main():
 
         for remote in repository.remotes:
             old_url = next(remote.urls)
+
+            if args.list_urls:
+                print(f"Url of {remote} in {path} is: {old_url}")
+                continue
 
             if old_url.startswith(args.source_prefix) \
                     and old_url.endswith(args.source_suffix):
