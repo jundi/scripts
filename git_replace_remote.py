@@ -45,14 +45,14 @@ def main():
         try:
             repository = git.Repo(path)
         except git.InvalidGitRepositoryError:
-            print(f"{path} is not valid git repository")
+            print(f"{path} is not valid git repository\n")
             continue
 
         for remote in repository.remotes:
             old_url = next(remote.urls)
 
             if args.list_urls:
-                print(f"Url of {remote} in {path} is: {old_url}")
+                print(f"Url of {remote} in {path} is:\n    {old_url}\n")
                 continue
 
             if old_url.startswith(args.source_prefix) \
@@ -62,16 +62,16 @@ def main():
                 base_url = old_url[
                     len(args.source_prefix):-len(args.source_suffix) or None
                 ]
-                new_url = f"{args.dest_prefix}{base_url}{args.dest_suffix}"
+                new_url = f"{args.dest_prefix}{base_url}{args.dest_suffix}\n"
 
                 # Set url
                 if not args.dry_run:
                     remote.set_url(new_url)
                 print(f"Url of {remote} in {path} was replaced:\n"
-                      f"    {old_url} → {new_url}")
+                      f"    {old_url} → {new_url}\n")
 
             else:
-                print(f"Url of {remote} in {path} does not match: {old_url}")
+                print(f"Url of {remote} in {path} does not match: {old_url}\n")
 
 
 if __name__ == "__main__":
