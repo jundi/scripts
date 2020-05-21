@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 VENV_HOME=~/.venv
 DEFAULT_PACKAGES="pip pytest"
