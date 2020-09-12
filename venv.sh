@@ -41,3 +41,5 @@ if [[ -z "$VIRTUAL_ENV" ]]; then
 		echo "Virtualenv not created"
 	esac
 fi
+
+set +e
