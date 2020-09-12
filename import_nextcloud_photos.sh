@@ -1,9 +1,9 @@
 #!/bin/bash
 
 REMOTEURL="https://cloud.woelkli.com/"
-NEXTCLOUDDIR="$HOME/kuvat/nextcloud"
+NEXTCLOUDDIR="/mnt/manu/home/kuvat/nextcloud"
 REMOTEPHOTODIR="/"
-LOCALPHOTODIR="$HOME/valokuvat"
+LOCALPHOTODIR="/mnt/manu/home/valokuvat"
 USER=$1
 PASSWORD=$2
 
