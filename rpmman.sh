@@ -13,8 +13,8 @@ Example: \n
 \n
 Options: \n
 \t-Qs \t search installed packages\n
-\t-Qi \t list installed packages\n
-\t-Qo \t list files provieded by installed package\n
+\t-Ql \t list files provieded by installed package\n
+\t-Qo \t find package that owns a file\n
 \t-Ss \t search packages\n
 \n
 "
