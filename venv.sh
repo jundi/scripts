@@ -2,7 +2,7 @@
 set -e
 
 VENV_HOME=~/.venv
-DEFAULT_PACKAGES="pip pytest"
+DEFAULT_PACKAGES="pip pytest pdbpp"
 
 original_pwd=$PWD
 
